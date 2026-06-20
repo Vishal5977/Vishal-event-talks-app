@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigQuery Release Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BigQuery Release Notes</h1>
+            <button id="refresh-btn">
+                <span class="btn-text">Refresh</span>
+                <div class="spinner hidden" id="spinner"></div>
+            </button>
+        </header>
+
+        <div id="error-message" class="hidden error"></div>
+        
+        <main id="notes-container">
+            <!-- Notes will be populated here -->
+        </main>
+    </div>
+
+    <!-- Tweet Composer Modal -->
+    <div id="tweet-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Compose Tweet</h2>
+                <button id="close-modal-btn" class="icon-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="tweet-textarea" rows="5" maxlength="280"></textarea>
+                <div class="char-count" id="char-count">280 characters remaining</div>
+                
+                <div class="tweet-preview-card">
+                    <div class="preview-image">
+                        <!-- BigQuery inspired placeholder SVG -->
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-title" id="preview-title">BigQuery Update</div>
+                        <div class="preview-domain">cloud.google.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-tweet-btn" class="secondary-btn">Cancel</button>
+                <button id="send-tweet-btn" class="primary-btn">Tweet</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
